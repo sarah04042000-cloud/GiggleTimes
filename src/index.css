@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        background: #FFF0F8;
+        color: #2D2150;
+        font-family: 'Nunito', sans-serif;
+        min-height: 100vh;
+    }
+
+    * {
+        @apply box-border;
+    }
+
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #F3E8FF;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #C084FC;
+        border-radius: 9999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #A855F7;
+    }
+}
+
+@layer components {
+
+    /* ── Buttons ───────────────────────────────── */
+    .btn-primary {
+        @apply inline-flex items-center gap-2 px-6 py-3 font-bold rounded-2xl text-white text-sm cursor-pointer transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:scale-95;
+        background: linear-gradient(135deg, #A855F7, #F43F8E);
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #9333EA, #DB2777);
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center gap-2 px-5 py-2.5 bg-white border-2 border-kids-purple text-kids-purple text-sm font-bold rounded-2xl transition-all duration-200 hover:bg-kids-purple hover:text-white hover:-translate-y-0.5 shadow-md cursor-pointer;
+    }
+
+    .btn-danger {
+        @apply inline-flex items-center gap-2 px-4 py-2 text-sm font-bold rounded-2xl text-white bg-kids-coral hover:bg-red-500 transition-all duration-200 shadow-md;
+    }
+
+    /* ── Cards ─────────────────────────────────── */
+    .card {
+        @apply bg-white rounded-3xl overflow-hidden border-2 border-transparent hover:border-kids-purple/20 transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-1;
+    }
+
+    .glass {
+        background: rgba(255, 255, 255, 0.90);
+        backdrop-filter: blur(12px);
+        border: 2px solid rgba(168, 85, 247, 0.18);
+        border-radius: 1.25rem;
+        box-shadow: 0 4px 24px rgba(168, 85, 247, 0.10);
+    }
+
+    /* ── Form inputs ───────────────────────────── */
+    .input-field {
+        @apply w-full border-2 border-purple-200 rounded-2xl px-4 py-3 text-gray-700 text-sm bg-white placeholder-gray-400 focus:outline-none focus:border-kids-purple transition-all duration-200 shadow-sm focus:shadow-md;
+    }
+
+    /* ── Fun section heading ───────────────────── */
+    .section-title {
+        @apply text-2xl font-black text-gray-800 flex items-center gap-2;
+    }
+
+    /* ── kid card gradient helpers ─────────────── */
+    .grad-purple {
+        background: linear-gradient(135deg, #A855F7, #7C3AED);
+    }
+
+    .grad-pink {
+        background: linear-gradient(135deg, #F43F8E, #EC4899);
+    }
+
+    .grad-orange {
+        background: linear-gradient(135deg, #FB923C, #F59E0B);
+    }
+
+    .grad-green {
+        background: linear-gradient(135deg, #22C55E, #16A34A);
+    }
+
+    .grad-blue {
+        background: linear-gradient(135deg, #38BDF8, #3B82F6);
+    }
+
+    .grad-coral {
+        background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+    }
+
+    .grad-mint {
+        background: linear-gradient(135deg, #4ECDC4, #26D0CE);
+    }
+
+    .grad-sun {
+        background: linear-gradient(135deg, #FFD93D, #FEC868);
+    }
+
+    .grad-rainbow {
+        background: linear-gradient(135deg, #A855F7, #F43F8E, #FB923C, #FBBF24, #22C55E, #38BDF8);
+        background-size: 300%;
+        animation: rainbow 4s linear infinite;
+    }
+
+    /* ── Kids page containers ─────────────────── */
+    .kids-page {
+        background: #FFF0F8;
+        min-height: 100vh;
+    }
+
+    /* ── Kids section card ────────────────────── */
+    .kids-card {
+        background: #FFFFFF;
+        border: 2px solid #E9D5FF;
+        border-radius: 1.5rem;
+        box-shadow: 0 4px 16px rgba(168, 85, 247, 0.08);
+    }
+
+    /* ── Scrolling row ─────────────────────────── */
+    .row-scroll {
+        display: flex;
+        gap: 1rem;
+        overflow-x: auto;
+        padding-bottom: 0.75rem;
+        scroll-snap-type: x mandatory;
+    }
+
+    .row-scroll>* {
+        scroll-snap-align: start;
+    }
+
+    .hide-scroll::-webkit-scrollbar {
+        display: none;
+    }
+
+    .hide-scroll {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    /* ── Bubble badge ──────────────────────────── */
+    .badge {
+        @apply inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full;
+    }
+
+    /* ── Music bars animation ──────────────────── */
+    .music-bar {
+        @apply w-1.5 bg-kids-purple rounded-full;
+        animation: bounceSm 0.8s ease-in-out infinite;
+    }
+
+    .music-bar:nth-child(2) {
+        animation-delay: 0.15s;
+    }
+
+    .music-bar:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    .music-bar:nth-child(4) {
+        animation-delay: 0.45s;
+    }
+}
+
+@layer utilities {
+    .line-clamp-2 {
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .line-clamp-3 {
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .text-shadow {
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .shadow-glow-purple {
+        box-shadow: 0 0 20px rgba(168, 85, 247, 0.35);
+    }
+
+    .shadow-glow-pink {
+        box-shadow: 0 0 20px rgba(244, 63, 142, 0.35);
+    }
+}
+
+/* ── Keyframe redefines for @layer utilities ── */
+@keyframes bounceSm {
+
+    0%,
+    100% {
+        transform: scaleY(1);
+    }
+
+    50% {
+        transform: scaleY(1.8);
+    }
+}
+
+@keyframes rainbow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+@keyframes wiggle {
+
+    0%,
+    100% {
+        transform: rotate(-8deg);
+    }
+
+    50% {
+        transform: rotate(8deg);
+    }
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
