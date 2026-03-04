@@ -4,14 +4,14 @@
   "description": "Kids Audio App - Stories and Songs for Kids",
   "private": true,
   "scripts": {
-    "install:frontend": "cd frontend && npm install",
-    "start": "npm run install:frontend && cd frontend && npm run dev",
-    "start:frontend": "cd frontend && npm run dev",
-    "start:backend": "cd backend && pip install -r requirements.txt && python app.py",
-    "install:all": "cd frontend && npm install",
-    "dev": "npm run start"
+    "build": "cd frontend && npx vite build",
+    "dev": "cd frontend && npx vite",
+    "start": "cd frontend && npx vite"
   },
   "keywords": ["kids", "audio", "stories", "songs", "education"],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^4.0.0"
+  }
 }

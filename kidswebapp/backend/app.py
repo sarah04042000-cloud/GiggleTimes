@@ -66,3 +66,13 @@ def index():
 if __name__ == "__main__":
     print("Kids Audio API starting on http://localhost:5000")
     app.run(debug=True, port=5000, host="0.0.0.0")
+    from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def home():
+    return {
+        "message": "GiggleTimes Kids Audio Story API is running 🚀",
+        "docs": "/docs"
+    }
