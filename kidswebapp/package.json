@@ -1,0 +1,17 @@
+{
+  "name": "kids-audio-app",
+  "version": "1.0.0",
+  "description": "Kids Audio App - Stories and Songs for Kids",
+  "private": true,
+  "scripts": {
+    "install:frontend": "cd frontend && npm install",
+    "start": "npm run install:frontend && cd frontend && npm run dev",
+    "start:frontend": "cd frontend && npm run dev",
+    "start:backend": "cd backend && pip install -r requirements.txt && python app.py",
+    "install:all": "cd frontend && npm install",
+    "dev": "npm run start"
+  },
+  "keywords": ["kids", "audio", "stories", "songs", "education"],
+  "author": "",
+  "license": "ISC"
+}
