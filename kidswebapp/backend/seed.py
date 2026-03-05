@@ -7,8 +7,8 @@ from dotenv import load_dotenv
 from utils.auth_utils import hash_password
 
 load_dotenv()
-MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017/kids_audio_app")
-DB_NAME   = os.getenv("MONGO_DB_NAME", "kids_audio_app")
+MONGO_URI = "mongodb://localhost:27017/kids_audio_app"
+DB_NAME   = "kids_audio_app"
 client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=15000)
 client.admin.command("ping")
 db = client[DB_NAME]
