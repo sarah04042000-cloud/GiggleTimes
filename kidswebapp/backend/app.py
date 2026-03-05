@@ -24,8 +24,8 @@ def serve_audio(filename):
 # ─── MongoDB Atlas ───────────────────────────────────────────────────────────
 import datetime
 
-MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017/kids_audio_app")
-DB_NAME   = os.getenv("MONGO_DB_NAME", "kids_audio_app")
+MONGO_URI = "mongodb://localhost:27017/kids_audio_app"
+DB_NAME   = "kids_audio_app"
 
 # pymongo 4.16 handles TLS via the OS trust store automatically
 client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=20000)
@@ -66,13 +66,3 @@ def index():
 if __name__ == "__main__":
     print("Kids Audio API starting on http://localhost:5000")
     app.run(debug=True, port=5000, host="0.0.0.0")
-    from fastapi import FastAPI
-
-app = FastAPI()
-
-@app.get("/")
-def home():
-    return {
-        "message": "GiggleTimes Kids Audio Story API is running 🚀",
-        "docs": "/docs"
-    }
