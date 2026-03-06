@@ -1,11 +1,11 @@
 services:
+  # Backend API
   - type: web
-    name: kids-audio-app
-    plan: free
+    name: kids-audio-api
     env: python
-    rootDir: kidswebapp
-    buildCommand: "./build.sh"
-    startCommand: "gunicorn app:app --chdir backend"
+    rootDir: kidswebapp/backend
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app"
     envVars:
       - key: PYTHON_VERSION
         value: 3.10.12
@@ -15,5 +15,19 @@ services:
         value: "kids_audio_app"
       - key: JWT_SECRET
         generateValue: true
+
+  # Frontend React App  
+  - type: web
+    name: kids-audio-frontend
+    env: static
+    rootDir: kidswebapp/frontend
+    buildCommand: "npm install && npm run build"
+    staticPublishPath: "./dist"
+    envVars:
       - key: NODE_VERSION
         value: "20.11.1"
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: kids-audio-api
+          envVarKey: RENDER_EXTERNAL_URL
