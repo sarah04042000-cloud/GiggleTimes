@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: kids-audio-app
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn app:app --chdir backend"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.12
+      - key: MONGO_URI
+        sync: false
+      - key: DB_NAME
+        value: "kids_audio_app"
+      - key: JWT_SECRET
+        sync: false

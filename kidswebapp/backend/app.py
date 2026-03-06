@@ -6,7 +6,7 @@ from pymongo import MongoClient
 
 load_dotenv()
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../frontend/dist', static_url_path='/')
 
 # Allow all origins for development; tighten in production
 CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
@@ -24,8 +24,8 @@ def serve_audio(filename):
 # ─── MongoDB Atlas ───────────────────────────────────────────────────────────
 import datetime
 
-MONGO_URI = "mongodb://localhost:27017/kids_audio_app"
-DB_NAME   = "kids_audio_app"
+MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017/kids_audio_app")
+DB_NAME   = os.getenv("DB_NAME", "kids_audio_app")
 
 # pymongo 4.16 handles TLS via the OS trust store automatically
 client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=20000)
@@ -58,9 +58,18 @@ app.register_blueprint(games_bp,    url_prefix="/api")
 app.register_blueprint(songs_bp,    url_prefix="/api")
 
 
-@app.route("/")
-def index():
-    return {"message": "Kids Audio App API is running 🎮"}
+@app.route("/", defaults={"path": ""})
+@app.route("/<path:path>")
+def serve_react_app(path):
+    if path != "" and os.path.exists(app.static_folder + "/" + path):
+        return send_from_directory(app.static_folder, path)
+    else:
+        # Fallback to index.html for React Router
+        index_path = os.path.join(app.static_folder, "index.html")
+        if os.path.exists(index_path):
+            return send_from_directory(app.static_folder, "index.html")
+        else:
+            return {"message": "Kids Audio App API is running 🎮. Frontend not built yet."}, 200
 
 
 if __name__ == "__main__":
