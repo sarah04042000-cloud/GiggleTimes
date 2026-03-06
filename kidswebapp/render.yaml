@@ -3,6 +3,7 @@ services:
     name: kids-audio-app
     plan: free
     env: python
+    rootDir: kidswebapp
     buildCommand: "./build.sh"
     startCommand: "gunicorn app:app --chdir backend"
     envVars:
