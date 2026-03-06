@@ -9,8 +9,8 @@ services:
       - key: PYTHON_VERSION
         value: 3.10.12
       - key: MONGO_URI
-        sync: false
+        generateValue: true
       - key: DB_NAME
         value: "kids_audio_app"
       - key: JWT_SECRET
-        sync: false
+        generateValue: true
