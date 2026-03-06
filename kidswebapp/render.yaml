@@ -4,7 +4,7 @@ services:
     plan: free
     env: python
     rootDir: kidswebapp
-    buildCommand: "cd frontend && npm install && npm run build && cd ../backend && pip install -r requirements.txt"
+    buildCommand: "./build.sh"
     startCommand: "gunicorn app:app --chdir backend"
     envVars:
       - key: PYTHON_VERSION

@@ -2,6 +2,13 @@
 # exit on error
 set -o errexit
 
+# Install Node.js if it doesn't exist (Render Python environment doesn't have it by default)
+if ! command -v node > /dev/null; then
+  echo "Installing Node.js..."
+  curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+  apt-get install -y nodejs
+fi
+
 echo "Building frontend..."
 cd frontend
 npm install
